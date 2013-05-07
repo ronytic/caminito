@@ -1,0 +1,37 @@
+/* CSS Document */
+body{
+	background: url('../../images/horizontal_repeat_sprite.png') repeat-x 0 -1421px #4396CA;
+}
+#formLogin{
+	background-color:#FFF;
+	margin-top:45%;
+	text-align:center;
+	-webkit-box-shadow:1px 1px 1px rgb(0,0,0);
+}
+#formLogin label{
+	color:#CCC;
+	font-size:15pt;
+	margin:20px;        
+}
+#formLogin input[type=text],#formLogin input[type=password]{
+	margin:10px;
+	padding:10px;
+	font-size:12pt;
+	width:160px;
+	border:#CCC 1px solid;
+}
+#login{
+
+}
+input.campos{
+	margin:10px;
+	padding:10px;
+	font-size:12pt;
+	width:160px;
+	border:#CCC 1px solid;
+}
+#formLogin input[type=submit]{
+	padding:10px;
+	font-weight:bolder;
+
+}
