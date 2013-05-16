@@ -81,7 +81,11 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 	$pdf->SetXY(10,25);
 	$pdf->Cell(260,0,"",1);
 	$pdf->SetXY(15,30);
-	$pdf->Cell(10,5,utf8_decode("Evaluación Diagnostica: ".$ni['ValorInicial']),$bordeC);
+	$pdf->SetFontSize(12);
+	$pdf->Cell(10,5,utf8_decode("Evaluación Diagnostica: "),$bordeC);
+	$pdf->SetFontSize(7);
+	$pdf->SetX(65);
+	$pdf->MultiCell(200,3,utf8_decode(mb_strtoupper($ni['ValorInicial'],"utf8")),0);
 	$pdf->Ln();
 	$pdf->SetX(10);
 	$pdf->Cell(260,0,"",1);
@@ -89,7 +93,7 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 	
 	$pdf->Ln();
 	$pdf->SetX(10);
-	$pdf->SetFont("arial","B");
+	$pdf->SetFont("arial","B",11);
 	$pdf->Cell(50,8,utf8_decode("Materias"),1,0,"C");
 	$pdf->Cell(70,8,utf8_decode("1º Trimestre"),1,0,"C");
 	$pdf->Cell(70,8,utf8_decode("2º Trimestre"),1,0,"C");
@@ -107,12 +111,13 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 	$pdf->Line(130,40,130,170);
 	$pdf->Line(200,40,200,170);
 	$pdf->Line(270,40,270,170);
+	$pdf->SetFontSize(9);
 	$i=0;
 	foreach($cursomateria->mostrarMaterias($CodCurso) as $matbol){
 		$mat=$materias->mostrarMateria($matbol['CodMateria']);
 		$mat=array_shift($mat);
-		$pdf->SetXY(10,45+$i);
-		
+		$pdf->SetXY(10,48+$i);
+		$pdf->SetFontSize(12);
 		if($matbol['Alterno']==1)
 			$pdf->MultiCell(50,4,utf8_decode($mat['Nombre'].""),0,"L");
 		if($matbol['Alterno']==2)
@@ -129,11 +134,11 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 		$regNotas=$notascualitativa->mostrarCodDocMatAlumnoTrimestre($docmat['CodDocenteMateriaCurso'],$CodAlumno,1);
 		$regNotas=array_shift($regNotas);
 		
-		
+		$pdf->SetFontSize(8);
 		///Primer Trimestre
 		if($trimestre>=1){
-			$pdf->SetXY($boletin4x+63,$boletin4y+45+$i);
-			$pdf->MultiCell(65,4,$regNotas['Valor'],0,"L",0);//Nota
+			$pdf->SetXY($boletin4x+63,$boletin4y+48+$i);
+			$pdf->MultiCell(65,4,utf8_decode(mb_strtoupper($regNotas['Valor'],"utf8")),0,"L",0);//Nota
 		}
 			
 		//echo $trimestre.".";
@@ -142,8 +147,8 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 		$regNotas=array_shift($regNotas);
 		//Segundo Trimestre
 		if($trimestre>=2){
-			$pdf->SetXY($boletin4x+133,$boletin4y+45+$i);
-			$pdf->MultiCell(65,4,$regNotas['Valor'],0,"L",0);//Nota
+			$pdf->SetXY($boletin4x+133,$boletin4y+48+$i);
+			$pdf->MultiCell(65,4,utf8_decode(mb_strtoupper($regNotas['Valor'],"utf8")),0,"L",0);//Nota
 		}
 		
 		$docmat=array_shift($docentemateriacurso->mostrarMateriaCursoTrimestreSexo($mat['CodMateria'],$CodCurso,$al['Sexo'],3));
@@ -152,16 +157,18 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 		
 		///Tercer Trimestre
 		if($trimestre>=3){
-			$pdf->SetXY($boletin4x+203,$boletin4y+45+$i);
-			$pdf->MultiCell(65,4,$regNotas['Valor'],0,"L",0);//Nota
+			$pdf->SetXY($boletin4x+203,$boletin4y+48+$i);
+			$pdf->MultiCell(65,4,utf8_decode(mb_strtoupper($regNotas['Valor'],"utf8")),0,"L",0);//Nota
 		}
 		
 		
-		$i+=25.2;//Salto para abajo
+		$i+=24.5;//Salto para abajo
 	}
+	$pdf->SetFontSize(12);
 	$pdf->SetXY(10,172);
 	$pdf->Cell(60,5,utf8_decode("Informe Final de Aprendizaje: "),$bordeC);
-	$pdf->MultiCell(200,5,utf8_decode($ni['ValorFinal'].""),0);
+	$pdf->SetFontSize(7);
+	$pdf->MultiCell(200,3,utf8_decode($ni['ValorFinal'].""),0);
 	$pdf->Line(120,200,170,200);
 	$pdf->SetXY(120,200);
 	$pdf->Cell(50,5,"Sello y Firma",0,0,"C");
