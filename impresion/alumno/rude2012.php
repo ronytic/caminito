@@ -2,14 +2,23 @@
 include_once("../fpdf/fpdf.php");
 include_once("../../class/rude.php");
 include_once("../../class/alumno.php");
+include_once("../../class/curso.php");
 include_once("../../class/config.php");
 $rude=new rude;
 $alumno=new alumno;
 $config=new configuracion;
+$curso=new curso;
+
 $al=$rude->mostrarDatos($_GET['CodAlumno']);
 $a=$alumno->mostrarDatos($_GET['CodAlumno']);
 $al=array_shift($al);
+
 $a=array_shift($a);
+
+//$cur=$curso->mostrarCurso($a['CodCurso']);
+//$cur=array_shift($cur);
+
+print_r($cur);
 $c=$config->mostrarConfig("NombreLibreta");
 $NombreLibreta=array_shift($c);
 $c=$config->mostrarConfig("Sie");
@@ -81,7 +90,7 @@ function escribe($x,$y,$t,$tam=12){
 	
 	escribe(50,104,$al['CodigoSie']);//SIE
 	escribe(155,104.5,$al['NombreUnidad'],10);
-	if($a['CodCurso']==2)escribe(8.5,119.5,"x",7);//pre kinder
+	if($a['CodCurso']==2 || $a['CodCurso']==1)escribe(8.3,119.5,"x",7);//pre kinder
 	if($a['CodCurso']==3)escribe(14,119.5,"x",7);//kinder
 	//if($a['CodCurso']==3)escribe(23.5,119.5,"x",7);//1
 	//if($a['CodCurso']==3)escribe(28.5,119.5,"x",7);//2
@@ -96,8 +105,12 @@ function escribe($x,$y,$t,$tam=12){
 	if($a['CodCurso']==12)escribe(75.5,119.5,"x",7);//5
 	if($a['CodCurso']==13)escribe(80.5,119.5,"x",7);//6*/
 	
-	escribe(123.8,121.5,"x",8);//paralelo
-	
+	if($a['CodCurso']==1 || $a['CodCurso']==3)
+	{
+		escribe(123.8,121.5,"x",8);//paralelo
+	}else{
+		escribe(128.8,121.7,"x",8);//paralelo
+	}
 	escribe(186.2,120,"x",10);//turno
 	
 	escribe(60,134,$al['ProvinciaE']);

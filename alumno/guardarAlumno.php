@@ -2,7 +2,7 @@
 session_start();
 include_once("../login/check.php");
 include_once("../class/alumno.php");
-include_once("../class/tmp_alumno.php");
+
 include_once("../class/cuota.php");
 include_once("../class/documento.php");
 include_once("../class/config.php");
@@ -10,7 +10,7 @@ if(!empty($_POST)){
 	$al=new alumno;
 	$cuota=new cuota;
 	$doc=new documento;
-	$tmpalumno=new tmp_alumno;
+	
 	$conf=new configuracion;
 	/**/
 	//$cnf=$conf->mostrarConfig();
@@ -175,7 +175,7 @@ if(!empty($_POST)){
 	$al->insertarAlumno($valuesAl);
 	$doc->guardarDocumento($valuesDoc);
 	
-	if(!empty($CodAl)){$tmpalumno->actualizarVisor($CodAl);}
+	//if(!empty($CodAl)){$tmpalumno->actualizarVisor($CodAl);}
 	header("Location:../");
 }
 ?>

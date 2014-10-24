@@ -12,6 +12,11 @@ if(!empty($_POST['CodAlumno'])){
 	$al=$alumno->mostrarDatos($CodAlumno);
 	$alu=array_shift($alu);
 	$al=array_shift($al);
+if(count($alu)<=0){
+		echo "Este Rude no esta Registrado, Registrelo antes de poder editarlo";
+		exit();
+	}
+
 	?>	
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <form action="actualizarRude.php" method="post" onsubmit="javascript:return false;if(confirm('¿Esta seguro de Guardar los Datos?'))">

@@ -3,13 +3,30 @@
 	include_once($folder."config.php");
 	include_once($folder."class/alumno.php");
 	include_once($folder."class/curso.php");
+	include_once($folder."class/docentemateriacurso.php");
 	$al=new alumno;
 	$curso=new curso;
+	$docMateriaCurso=new docentemateriacurso;
+	
+	if($SoloDocente==1){
+		$i=0;
+		foreach($docMateriaCurso->mostrarDocenteCurso($CodDocente) as $cur){$i++;
+					$CodCurso=$cur['CodCurso'];
+
+                    $c=$curso->mostrarCurso($cur['CodCurso']);
+                    $c=$c=array_shift($c);
+
+                    $curs[$i]['CodCurso']=$CodCurso;
+                    $curs[$i]['Nombre']=$c['Nombre'];
+        }
+        
+	}else{
+		$curs=$curso->mostrar();
+	}
 	?>
 	<?php include_once($folder."cabecerahtml.php");?>
 	<script language="javascript" type="text/javascript" src="<?php echo $folder;?>js/listar/listado.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo $folder;?>js/<?php echo $jsFile;?>"></script>
-    
     <script language="javascript">
     $(document).ready(function() { 
 		$().datepicker();
@@ -23,7 +40,7 @@
 				<div class="cuerpo">
 				<ul>
 				<?php
-					foreach($curso->mostrar() as $cur){
+					foreach($curs as $cur){
 						?>
 						<li><input type="radio" name="Curso" value="<?php echo $cur['CodCurso'];?>" id="curso<?php echo $cur['CodCurso'];?>" class="radio"/><label class="lradio capital" for="curso<?php echo $cur['CodCurso'];?>"><?php echo $cur['Nombre'];?></label></li>
 						<?php	
@@ -49,4 +66,4 @@
 		</div>
 		<div class="clear"></div>
 	</div>
-	<?php include_once($folder."footer.php");?>
+	<?php include_once($folder."footer.php");?>{}

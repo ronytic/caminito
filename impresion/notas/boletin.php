@@ -95,9 +95,9 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 	$pdf->SetX(10);
 	$pdf->SetFont("arial","B",11);
 	$pdf->Cell(50,8,utf8_decode("Materias"),1,0,"C");
-	$pdf->Cell(70,8,utf8_decode("1º Trimestre"),1,0,"C");
-	$pdf->Cell(70,8,utf8_decode("2º Trimestre"),1,0,"C");
-	$pdf->Cell(70,8,utf8_decode("3º Trimestre"),1,0,"C");
+	$pdf->Cell(70,8,utf8_decode("1º Bimestre"),1,0,"C");
+	$pdf->Cell(70,8,utf8_decode("2º Bimestre"),1,0,"C");
+	$pdf->Cell(70,8,utf8_decode("3º Bimestre"),1,0,"C");
 	$pdf->SetFont("arial","");
 	// -
 	$pdf->Line(10,70,270,70);
@@ -138,7 +138,7 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 		///Primer Trimestre
 		if($trimestre>=1){
 			$pdf->SetXY($boletin4x+63,$boletin4y+48+$i);
-			$pdf->MultiCell(65,4,utf8_decode(mb_strtoupper($regNotas['Valor'],"utf8")),0,"L",0);//Nota
+			$pdf->MultiCell(65,4,$regNotas['Valor'],0,"L",0);//Nota
 		}
 			
 		//echo $trimestre.".";
