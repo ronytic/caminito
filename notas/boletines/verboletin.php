@@ -24,7 +24,7 @@ display: inline-block;
     <a href="<?php echo $archivo?>" class="botonSec corner-all" target="_blank">Boletin en grande</a> 
     <!--<a href="#" class="botonSec" id="registrarimpresion">Registrar Impresión</a>-->
     <hr />
-    <iframe width="450" height="600" src="<?php echo $archivo?>"></iframe>
+    <iframe width="430" height="400" src="<?php echo $archivo?>"></iframe>
     <div id="respuestaimpresiones"></div>
     <?php
 }
