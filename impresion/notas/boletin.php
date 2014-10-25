@@ -3,6 +3,7 @@ include_once("../../login/check.php");
 if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 	$CodCurso=$_GET['CodCurso'];
 	$CodAlumno=$_GET['CodAlumno'];	
+	$Bimestre=$_GET['Bimestre'];
 	include_once("../../class/config.php");
 	include_once("../../class/alumno.php");
 	include_once("../../class/curso.php");
@@ -94,7 +95,7 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 	$pdf->Ln();
 	$pdf->SetX(10);
 	$pdf->SetFont("arial","B",11);
-	$pdf->Cell(50,8,utf8_decode("Materias"),1,0,"C");
+	$pdf->Cell(50,8,utf8_decode("Materias".$Bimestre),1,0,"C");
 	$pdf->Cell(70,8,utf8_decode("1º Bimestre"),1,0,"C");
 	$pdf->Cell(70,8,utf8_decode("2º Bimestre"),1,0,"C");
 	$pdf->Cell(70,8,utf8_decode("3º Bimestre"),1,0,"C");
@@ -135,6 +136,7 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 		$regNotas=array_shift($regNotas);
 		
 		$pdf->SetFontSize(8);
+		
 		///Primer Trimestre
 		if($trimestre>=1){
 			$pdf->SetXY($boletin4x+63,$boletin4y+48+$i);
@@ -145,6 +147,8 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 		$docmat=array_shift($docentemateriacurso->mostrarMateriaCursoTrimestreSexo($mat['CodMateria'],$CodCurso,$al['Sexo'],2));
 		$regNotas=$notascualitativa->mostrarCodDocMatAlumnoTrimestre($docmat['CodDocenteMateriaCurso'],$CodAlumno,2);
 		$regNotas=array_shift($regNotas);
+		
+		
 		//Segundo Trimestre
 		if($trimestre>=2){
 			$pdf->SetXY($boletin4x+133,$boletin4y+48+$i);
