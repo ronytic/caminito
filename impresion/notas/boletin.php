@@ -95,7 +95,7 @@ if(!empty($_GET) && isset($_GET['mf']) && $_GET['mf']==md5("lock")){
 	$pdf->Ln();
 	$pdf->SetX(10);
 	$pdf->SetFont("arial","B",11);
-	$pdf->Cell(70,8,utf8_decode("Materias".$Bimestre),1,0,"C");
+	$pdf->Cell(70,8,utf8_decode("Materias"),1,0,"C");
 	$pdf->Cell(120,8,utf8_decode($Bimestre."º Bimestre"),1,0,"C");
 	//$pdf->Cell(70,8,utf8_decode("2º Bimestre"),1,0,"C");
 	//$pdf->Cell(70,8,utf8_decode("3º Bimestre"),1,0,"C");
