@@ -27,7 +27,7 @@ class docentemateriacurso extends db{
 	}
 	function mostrarDocenteMateria($CodDocente){
 		$this->campos=array("*");
-		return $this->getRecords(" CodDocente=$CodDocente",0,"CodMateria");
+		return $this->getRecords(" CodDocente=$CodDocente and Activo=1",0,"CodMateria");
 	}
 	function mostrarMateriaCurso($CodMateria,$CodCurso){
 		$this->campos=array('*');
