@@ -5,7 +5,7 @@ setlocale(LC_ALL, 'esp');
 $host="localhost";
 $user="root";
 $pass="";
-$database="caminito2014";
+$database="caminito";
 
 $tables_export=array("agenda","cuota","tarea");
 ?>
