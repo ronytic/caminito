@@ -107,9 +107,9 @@ function escribe($x,$y,$t,$tam=12){
 	
 	if($a['CodCurso']==1 || $a['CodCurso']==3)
 	{
-		escribe(123.8,121.5,"x",8);//paralelo
+		escribe(123.8,121.5,"x",8);//paralelo A
 	}else{
-		escribe(128.8,121.7,"x",8);//paralelo
+		escribe(128.8,121.7,"x",8);//paralelo B
 	}
 	escribe(186.2,120,"x",10);//turno
 	
