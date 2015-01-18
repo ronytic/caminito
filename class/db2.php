@@ -110,7 +110,7 @@ class db{
 		else
 			$query ="INSERT INTO {$nombretabla} ($campos) VALUES ($datos)";
 			
-		//echo $query;
+		//echo $query."<br>";
 		return mysql_query($query);
 	}
 	public function deleteRecord ($where_str){
@@ -143,7 +143,7 @@ class db{
 		}
 		$datos=implode(",",$data);
 		$nombretabla=mb_strtolower($this->tabla,"utf8");
-		//echo "UPDATE {$nombretabla} SET $datos $where";
+		//echo "UPDATE {$nombretabla} SET $datos $where"."<br>";
 		mysql_query ("UPDATE $nombretabla SET $datos $where");
 	}
 	function vaciar(){
