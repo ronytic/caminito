@@ -66,4 +66,4 @@
 		</div>
 		<div class="clear"></div>
 	</div>
-	<?php include_once($folder."footer.php");?>{}
+	<?php include_once($folder."footer.php");?>
