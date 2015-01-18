@@ -2,7 +2,7 @@
 /*$title=utf8_encode("Colegio Particular \"Santa Bárbara\"");*/
 /*$siglas="CSB";*/
 $directory="caminito/";//ej:carp/ sin el "/"
-$url="http://11.1.2.31/";//ej:http:"localhost/"
+$url="http://localhost/";//ej:http:"localhost/"
 /*$urlInternet="http://www.santabarbara.edu.bo/";
 $directoryInternet="caminito";
 $gestion=utf8_encode("Gestión 2012");
